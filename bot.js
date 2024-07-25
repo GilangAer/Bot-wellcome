@@ -10,8 +10,6 @@ const bot = new TelegramBot(token, { polling: true });
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/favicon.ico', (req, res) => res.status(204));
-
 // Menyiapkan webhook
 bot.setWebHook(`${URL}/bot${token}`);
 
@@ -20,6 +18,8 @@ app.post(`/bot${token}`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
 });
+
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 // Menyambut anggota baru
 bot.on('new_chat_members', (msg) => {
