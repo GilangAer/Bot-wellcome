@@ -1,8 +1,14 @@
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 // Gantikan 'YOUR_TELEGRAM_BOT_TOKEN' dengan token bot yang Anda dapatkan dari BotFather
 const token = '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
 const bot = new TelegramBot(token, { polling: true });
+
+// Membuat aplikasi express
+const app = express();
+app.use(bodyParser.json());
 
 // Menyambut anggota baru
 bot.on('new_chat_members', (msg) => {
@@ -53,8 +59,14 @@ bot.onText(/\/market/, (msg) => {
     bot.sendMessage(chatId, telegramMessage);
 });
 
-console.log('Bot is running...');
+// Menyediakan route untuk vercel
+app.get('/', (req, res) => {
+    res.send('Bot is running...');
+});
 
-// server.listen(process.env.PORT || 3000, ()=>{
-//     console.log('Server is running...');
-// });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+console.log('Bot is running...');
