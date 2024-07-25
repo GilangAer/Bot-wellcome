@@ -28,28 +28,28 @@ bot.onText(/\/web/, (msg) => {
 // Fungsi untuk menampilkan informasi Twitter
 bot.onText(/\/twitter/, (msg) => {
     const chatId = msg.chat.id;
-    const twitterMessage = 'X : https://x.com/PavoCoint';
+    const twitterMessage = 'Our Official X : https://x.com/PavoCoint';
     bot.sendMessage(chatId, twitterMessage);
 });
 
 // Fungsi untuk menampilkan informasi Telegram
 bot.onText(/\/telegram/, (msg) => {
     const chatId = msg.chat.id;
-    const telegramMessage = 'Telegram : https://t.me/+c2z_F35p-CIxZGU5';
+    const telegramMessage = 'Our Official Telegram : https://t.me/+c2z_F35p-CIxZGU5';
     bot.sendMessage(chatId, telegramMessage);
 });
 
 // Fungsi untuk menampilkan informasi Pump
 bot.onText(/\/pump/, (msg) => {
     const chatId = msg.chat.id;
-    const telegramMessage = 'Pump : https://pump.fun/ECxVCgBYZz6jqwJdnEwWTgByeSR9YXrtyGcr5TLyZ85t';
+    const telegramMessage = 'Pump PavoCoin : https://pump.fun/ECxVCgBYZz6jqwJdnEwWTgByeSR9YXrtyGcr5TLyZ85t';
     bot.sendMessage(chatId, telegramMessage);
 });
 
 // Fungsi untuk menampilkan informasi Martket NFT
 bot.onText(/\/market/, (msg) => {
     const chatId = msg.chat.id;
-    const telegramMessage = 'Market NFT : https://market.pavocoin.xyz/';
+    const telegramMessage = 'Market NFT PavoCoin : https://market.pavocoin.xyz/';
     bot.sendMessage(chatId, telegramMessage);
 });
 
