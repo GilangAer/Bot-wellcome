@@ -11,6 +11,16 @@ const app = express();
 app.use(bodyParser.json());
 
 
+app.post('/webhook', (req, res) => {
+    try {
+        bot.processUpdate(req.body)
+        res.sendStatus(200)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+})
+
+
 // Menyambut anggota baru
 bot.on('new_chat_members', (msg) => {
     const chatId = msg.chat.id;
