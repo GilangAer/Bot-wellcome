@@ -10,6 +10,9 @@ const bot = new TelegramBot(token, { polling: true });
 const app = express();
 app.use(bodyParser.json());
 
+const URL = process.env.URL || 'https://bot-wellcome.vercel.app';
+const PORT = process.env.PORT || 3000;
+
 // Menyiapkan webhook
 bot.setWebHook(`${URL}/bot${token}`);
 
@@ -75,7 +78,7 @@ app.get('/', (req, res) => {
     res.send('Bot is running...');
 });
 
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
