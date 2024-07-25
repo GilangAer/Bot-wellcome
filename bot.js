@@ -12,18 +12,38 @@ const bot = new TelegramBot(token, { polling: true });
 const app = express();
 app.use(bodyParser.json());
 
+const URL = process.env.URL || 'https://bot-wellcome..vercel.app';
 
-const URL = process.env.URL || 'https://bot-wellcome.vercel.app';
+bot.setWebHook(`${URL}/bot${token}`)
+    .then(() => {
+        console.log(`Webhook set to ${URL}/bot${token}`);
+    })
+    .catch((error) => {
+        console.error('Error setting webhook:', error);
+    });
 
+// Webhook endpoint
+app.post(`/bot${token}`, (req, res) => {
+    console.log('Received webhook');
+    console.log(req.body);  // Tambahkan log untuk melihat payload yang diterima
+    bot.processUpdate(req.body)
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.error('Error processing update:', error);
+            res.sendStatus(500);
+        });
+});
 
-app.post('/webhook', (req, res) => {
-    try {
-        bot.processUpdate(req.body)
-        res.sendStatus(200)
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})
+// app.post('/webhook', (req, res) => {
+//     try {
+//         bot.processUpdate(req.body)
+//         res.sendStatus(200)
+//     } catch (error) {
+//         res.status(500).send(error)
+//     }
+// })
 
 
 // Menyambut anggota baru
@@ -79,9 +99,6 @@ bot.onText(/\/market/, (msg) => {
 app.get('/', (req, res) => {
     res.send('Bot is running...');
 });
-
-// Favicon route untuk menghindari 404
-app.get('/favicon.ico', (req, res) => res.status(204));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
