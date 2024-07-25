@@ -54,3 +54,7 @@ bot.onText(/\/market/, (msg) => {
 });
 
 console.log('Bot is running...');
+
+// server.listen(process.env.PORT || 3000, ()=>{
+//     console.log('Server is running...');
+// });
