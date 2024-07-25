@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 const URL = process.env.URL || 'https://bot-wellcome..vercel.app';
 
+
 bot.setWebHook(`${URL}/bot${token}`)
     .then(() => {
         console.log(`Webhook set to ${URL}/bot${token}`);
