@@ -13,6 +13,9 @@ const app = express();
 app.use(bodyParser.json());
 
 
+const URL = process.env.URL || 'https://bot-wellcome.vercel.app';
+
+
 app.post('/webhook', (req, res) => {
     try {
         bot.processUpdate(req.body)
@@ -76,6 +79,9 @@ bot.onText(/\/market/, (msg) => {
 app.get('/', (req, res) => {
     res.send('Bot is running...');
 });
+
+// Favicon route untuk menghindari 404
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
