@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 // const token = '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
 const token = process.env.TELEGRAM_BOT_TOKEN || '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
-const bot = new TelegramBot(token, { webHook: true });
+const bot = new TelegramBot(token, { polling: true });
 
 // Membuat aplikasi express
 const app = express();
