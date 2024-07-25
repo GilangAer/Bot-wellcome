@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // Gantikan 'YOUR_TELEGRAM_BOT_TOKEN' dengan token bot yang Anda dapatkan dari BotFather
-const token = '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
+
+// const token = '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
+const token = process.env.TELEGRAM_BOT_TOKEN || '7368378129:AAFyFLKlwNf4O_ffXdQ5dFmzTBGqwQdnnTs';
 const bot = new TelegramBot(token, { polling: true });
 
 // Membuat aplikasi express
